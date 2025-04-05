@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Code, Package, Zap } from 'lucide-react';
+import { Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
+import { useTypewriter, Cursor } from 'react-simple-typewriter'; // ✅ Correct import
+import './GlassyUILandingPage.css';
 import gsap from 'gsap';
 import Footer from './Footer';
 import AOS from 'aos';
@@ -9,7 +10,16 @@ import 'aos/dist/aos.css';
 
 const GlassyUILandingPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
+  const githubRepoUrl = 'https://github.com/Karan-010/crystal-coomponent';
+
+  // ✅ Typewriter effect with multiple words
+  const [text] = useTypewriter({
+    words: ['Glassy UI', 'React Components', 'Smooth Library'],
+    loop: 0,
+    typeSpeed: 100,
+    deleteSpeed: 40,
+    delaySpeed: 1000,
+  });
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,71 +30,45 @@ const GlassyUILandingPage: React.FC = () => {
     tl.fromTo(
       '.homeGSap',
       { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: 'sine.inOut' },
+      { scale: 1, opacity: 1, duration: 0.7, ease: 'sine.inOut' },
     );
-
     return () => {
       tl.kill();
     };
   }, []);
 
   useEffect(() => {
-    // Initialize AOS if it hasn't been initialized
     if (AOS.init) {
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
+      AOS.init({ duration: 1000, once: true });
     }
-
-    // Refresh AOS on currentPage change
     AOS.refresh();
   }, []);
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center pt-10 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
+    <div className='min-h-screen flex flex-col items-center justify-center pt-10 font-mono relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950'>
       <div
         className='absolute inset-0 w-full h-full opacity-20'
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #ffffff 1px, transparent 1px),
-            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
-          `,
-          backgroundSize: '20px 20px',
-        }}
+        style={{ backgroundSize: '20px 20px' }}
       />
-
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-        <header className='w-full flex justify-between items-center mb-4'>
-          {' '}
-          {/* Adjusted mb-8 to mb-4 */}
-          <div className='text-2xl font-bold text-white'>
-            <span className='text-blue-400'>Glassy</span>UI
-          </div>
-          <a
-            href={githubRepoUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300'
-          >
-            <Star size={18} />
-            <span>Star the repo</span>
-          </a>
-        </header>
-
+        <header className='w-full flex justify-between items-center mb-4'></header>
         <main
-          className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
+          className='text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative'
+          style={{ marginTop: '20px' }}
           data-aos='flip-up'
           data-aos-duration='2500'
         >
-          <h1 className='text-7xl font-bold mb-4 text-white'>
-            <span className='animated-glossy-text'>Glassy UI</span>
+          {/* ✨ Improved Typewriter Effect */}
+          <h1 className='text-7xl font-bold mb-4 text-white min-h-[84px]'>
+            <span className='bg-gradient-to-r from-white via-cyan-300 to-white bg-clip-text text-transparent'>
+              {text}
+            </span>
+            <Cursor cursorColor='#00ffff' cursorStyle='!' cursorBlinking={true} />
           </h1>
+
           <p className='text-2xl mb-8 text-white'>
             A sleek glassmorphism UI library for modern web applications.
           </p>
-
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-10'>
             <FeatureCard
               icon={<Code size={24} />}
@@ -123,13 +107,12 @@ const GlassyUILandingPage: React.FC = () => {
           </div>
         </main>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
 
+// Feature Card Component
 const FeatureCard: React.FC<{
   icon: React.ReactNode;
   title: string;
@@ -142,6 +125,7 @@ const FeatureCard: React.FC<{
   </div>
 );
 
+// Glassmorphism Button Component
 const GlassmorphismButton: React.FC<{
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
@@ -156,10 +140,11 @@ const GlassmorphismButton: React.FC<{
     transition-all duration-300 ease-in-out
     hover:bg-opacity-30 hover:shadow-lg hover:scale-105
     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50
-    ${variant === 'primary' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-purple-500 hover:bg-purple-600'}
+    ${variant === 'primary' ? 'bg-purple-500 hover:bg-purple-600' : 'bg-purple-500 hover:bg-purple-600'}
   `;
 
   return React.createElement(as, { className, ...props }, children);
 };
 
 export default GlassyUILandingPage;
+

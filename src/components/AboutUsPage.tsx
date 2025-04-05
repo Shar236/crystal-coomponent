@@ -239,7 +239,7 @@ const AboutUsPage: React.FC = () => {
           </p>
           <SocialLinks>
             <a
-              href='https://github.com/Jaishree2310/GlassyUI-Components'
+              href='https://github.com/Karan-010/crystal-coomponent'
               target='_blank'
               rel='noopener noreferrer'
             >

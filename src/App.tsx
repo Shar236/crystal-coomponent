@@ -24,7 +24,7 @@ import ModalDetailsPage from './components/ModalDetailsPage';
 import NavigationDetailsPage from './components/NavigationDetailsPage';
 import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
-import ContributorsPage from './components/ContributorsPage';
+
 import DonationPage from './components/DonationPage';
 import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
@@ -108,7 +108,6 @@ const App: React.FC = () => {
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
-        <Route path='/contributors' element={<ContributorsPage />} />
         <Route path='/donate' element={<DonationPage />} />
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />

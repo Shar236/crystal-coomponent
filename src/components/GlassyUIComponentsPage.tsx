@@ -365,11 +365,14 @@ const GlassyUIComponentsPage: React.FC = () => {
         </header>
 
         <main>
+          <div className='flex flex-col items-center justify-center  text-center'>
           <h1
             className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'
             data-aos='fade-right'
             data-aos-delay='400'
             data-aos-duration='1300'
+            
+            
           >
             Glassmorphic Components
           </h1>
@@ -383,6 +386,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
           </p>
+          </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {currentComponents.map((component, index) => (

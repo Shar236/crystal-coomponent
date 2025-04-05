@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
           style={{
             textAlign: 'center',
             padding: '20px',
-            backgroundColor: '#111',
+            backgroundColor: 'rgba(81, 99, 152, 0.3)', // 30% opacity
             color: '#fff',
             height: '100%',
             width: '100%',
@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
               </form>
             </div>
             <a
-              href='https://github.com/Jaishree2310/GlassyUI-Components'
+              href='https://github.com/Karan-010/crystal-coomponent'
               target='_blank'
               rel='noopener noreferrer'
               className='github-link'
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
           .glass-footer {
             backdrop-filter: blur(10px) saturate(180%);
             -webkit-backdrop-filter: blur(10px) saturate(180%);
-            background-color: rgb(12, 17, 29);
+            background-color: rgb(27, 48, 112);
             width: 100vw;
             padding: 40px 20px;
             text-align: center;
@@ -171,13 +171,16 @@ const Footer: React.FC = () => {
             bottom: -2px;
             width: 0;
             height: 2px;
-            background-color: #48dbfb;
+            background-color: rgb( 181,241, 255);
             transition: width 0.3s;
           }
 
           .footer-link:hover::after {
             width: 100%;
           }
+            .footer-link:hover{
+            color:#20a8f7;
+            }
 
           .footer-bottom {
             display: flex;
